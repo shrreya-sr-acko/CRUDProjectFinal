@@ -32,6 +32,7 @@ public class FamilyService{
     public void addFamilyMember(int id, Family fam) {
         fam.setUser(userRepo.findById(id));
         famRepo.save(fam);
+        
     }
 
     public void deleteFamilyMember(int id) {

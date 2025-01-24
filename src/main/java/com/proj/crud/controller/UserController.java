@@ -32,7 +32,7 @@ public class UserController {
     private UserService userService;
     
     @GetMapping("user")
-    public List<User> getAllUsers(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "9") int size, @RequestParam(defaultValue = "id") String sortBy, @RequestParam(defaultValue = "true") Boolean isAscn) {
+    public List<User> getAllUsers(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "100") int size, @RequestParam(defaultValue = "id") String sortBy, @RequestParam(defaultValue = "true") Boolean isAscn) {
         Sort sort = Sort.by(sortBy).ascending();
         Pageable pageable = PageRequest.of(page, size, sort);
         return userService.getAllUsers(pageable).getContent();

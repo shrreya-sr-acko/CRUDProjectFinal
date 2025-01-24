@@ -36,18 +36,22 @@ public class FamilyController {
     }
 
     @PostMapping("user/{userId}/family")
-    public void addFamilyMember(@PathVariable int userId, @RequestBody Family fam) {
+    public Family addFamilyMember(@PathVariable int userId, @RequestBody Family fam) {
         famService.addFamilyMember(userId, fam);
+        return famService.getFamilyMember(fam.getId());
+        
     }
 
     @PutMapping("user/{userId}/family/{id}")
-    public void updatFamilyMember(@PathVariable int id, @RequestBody Family family) {
+    public Family updatFamilyMember(@PathVariable int id, @RequestBody Family family) {
         famService.updateFamilyMember(id, family);
+        return famService.getFamilyMember(id);
     }
 
     @PatchMapping("user/{userId}/family/{id}")
-    public void updatePartialFamilyMember(@PathVariable int id, @RequestBody Family updates) {
+    public Family updatePartialFamilyMember(@PathVariable int id, @RequestBody Family updates) {
         famService.updatePartialFamilyMember(id, updates);
+        return famService.getFamilyMember(id);
     }
 
     @DeleteMapping("user/{userId}/family/{id}")
